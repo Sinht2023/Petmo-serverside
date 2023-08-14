@@ -1,0 +1,126 @@
+[2023-08-10 08:41:22] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 24.92
+        )
+
+)
+  
+[2023-08-10 08:42:28] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 35.14
+        )
+
+)
+  
+[2023-08-10 08:42:43] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 30.59
+        )
+
+)
+  
+[2023-08-10 08:43:21] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 36.54
+        )
+
+)
+  
+[2023-08-10 08:43:32] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 31.97
+        )
+
+)
+  
+[2023-08-10 08:43:57] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 35.72
+        )
+
+)
+  
+[2023-08-10 08:47:13] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 35.8
+        )
+
+)
+  
+[2023-08-10 08:47:25] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 32.57
+        )
+
+)
+  
+[2023-08-10 08:47:35] testing.DEBUG: Array
+(
+    [0] => Array
+        (
+            [query] => select * from `pet_azuke_places`
+            [bindings] => Array
+                (
+                )
+
+            [time] => 36.56
+        )
+
+)
+  
