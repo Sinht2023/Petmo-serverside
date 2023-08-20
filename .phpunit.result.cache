@@ -1,0 +1,1 @@
+{"version":1,"defects":{"TestPetAzukePlaceController::testGetAllPetAzukePlaces":7,"TestPetAzukePlaceController::testGetPetAzukePlaces":8,"TestChatController::it_can_send_a_message":7},"times":{"TestPetAzukePlaceController::testGetAllPetAzukePlaces":0.094,"TestPetAzukePlaceController::testGetPetAzukePlaces":0.101,"TestChatController::it_can_send_a_message":0.126}}

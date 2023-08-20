@@ -9,41 +9,63 @@ use App\Http\Services\AzukePlaceService;
 
 class AzukePlaceController extends Controller
 {
-    private $accountService;
+    private $azukePlaceService;
 
     public function __construct(
-        AzukePlaceService $accountService
+        AzukePlaceService $azukePlaceService
     ) {
-        $this->accountService         = $accountService;
+        $this->azukePlaceService = $azukePlaceService;
     }
 
-    public function getAllPetAzukePlaces()
+    /*public function getAllPetAzukePlaces()
     {
         try {
 
-            dump('GET ALL AZUKE PLACES ******');
+            $places = $this->azukePlaceService->getAllPlaces();
 
-            $places = $this->accountService->getAllPlaces();
+            dump($places);
 
-            //dump($places);
-
-            return response()->json([
-                'result' => true,
-                'places' => $places
-            ]);
+            //return response()->json([
+            //    'result' => true,
+            //    'places' => $places
+            //]);
+            foreach($places as $key => $place){
+                return view('pet-azuke-places', ['petAzukePlaces' => $place]);
+            }
+            
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error fetching reservation places'], 500);
+        }
+    }*/
+    
+    
+    public function getAllPetAzukePlaces()
+    {
+        try {
+            $places = $this->azukePlaceService->getAllPlaces();
+            return view('petAzukePlaces', ['petAzukePlaces' => $places]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error fetching reservation places'], 500);
         }
     }
+
     public function getPetAzukePlace($place_id)
     {
         // Search for the place using the provided place_id
-        $place = $this->accountService->getPlaceById($place_id);
+        $place = $this->azukePlaceService->getPlaceById($place_id);
+        
+
+        //return response()->json([
+        //    'result' => true,
+        //    'place' => $place
+        //]);
+        return view('petAzukedetail', ['place' => $place]);
+
 
         if (!$place) {
             return response()->json(['message' => 'Place not found'], 404);
         }
 
-        return response()->json($place);
+        //return response()->json($place);
     }
 }

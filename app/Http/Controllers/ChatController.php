@@ -2,41 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use App\Http\Requests\SendMessageRequest;
+use App\Http\Services\ChatService;
+use App\Models\Chat;
 
 class ChatController extends Controller
 {
+    private $chatService;
+
+    public function __construct(
+        ChatService $chatService
+    ) {
+        $this->chatService = $chatService;
+    }
+    
     // Display the chat view
     public function index()
     {
         return view('chat');
     }
 
+    
     // Fetch chat messages
-    public function fetchMessages()
+    public function fetchMessagesFromMe(Request $request)
     {
-        // You can retrieve messages from your database or any other data source
-        $messages = [
-            ['username' => 'User1', 'message' => 'Hello, how are you?'],
-            ['username' => 'User2', 'message' => 'I\'m good, thank you!'],
-            // Add more messages...
-        ];
-
-        return response()->json($messages);
+        $senderUserId = $request->sender_user_id;
+        $placeId = $request->place_id;
+        
+        // Fetch messages from the database, you can modify the query as needed
+        $messages = $this->chatService->getMessagesByUserPlaceId($senderUserId, $placeId);
+        
+        return view('chat', ['formattedMessages' => $messages]);
     }
+
 
     // Send chat message
-    public function sendMessage(Request $request)
+    /*public function sendMessage(Request $request)
     {
-        // Validate the request
-        $this->validate($request, [
-            'username' => 'required',
-            'message' => 'required',
-        ]);
+        //dd($request->all());
 
-        // Store the message in the database or any other data source
-        // You can also broadcast the message to other users in real-time
+        Log::info('sendMessage method called');
 
-        return response()->json(['success' => true]);
-    }
+        $this->chatService->sendMessages($request);
+        
+        $messages = $this->fetchMessages($request->sender_user_id, $request->place_id);
+        
+        return view('chat', ['formattedMessages' => $messages]);
+
+        
+        //return response()->json([
+        //    'result' => true,
+        //    'message' => $messages,
+            
+        //]);
+
+        //return response()->json(['message' => 'Message sent successfully'], 201);
+    }*/
+    
+    // Send chat message
+    // Send chat message
+    public function sendMessage(Request $request)
+        {
+            Log::info('sendMessage method called');
+
+            $this->chatService->sendMessages($request);
+
+            //$senderUserId = $request->input('sender_user_id');
+            //$placeId = $request->input('place_id');
+
+            //$messages = $this->chatService->getMessagesByUserPlaceId($senderUserId, $placeId);
+
+            //return view('chat', ['formattedMessages' => $messages]);
+            
+            return redirect('/chat/1/2'); // Redirect to the /chat URL
+
+        }
+
+
+    
 }
