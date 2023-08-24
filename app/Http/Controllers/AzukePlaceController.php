@@ -44,6 +44,7 @@ class AzukePlaceController extends Controller
         try {
             $places = $this->azukePlaceService->getAllPlaces();
             return view('petAzukePlaces', ['petAzukePlaces' => $places]);
+            //return $places;
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error fetching reservation places'], 500);
         }
@@ -53,13 +54,15 @@ class AzukePlaceController extends Controller
     {
         // Search for the place using the provided place_id
         $place = $this->azukePlaceService->getPlaceById($place_id);
-        
+        $holidays = $this->azukePlaceService->getPlaceholidaysById($place_id);
+        //dump($holidays);
+
 
         //return response()->json([
         //    'result' => true,
         //    'place' => $place
         //]);
-        return view('petAzukedetail', ['place' => $place]);
+        return view('petAzukedetail', ['place' => $place, 'holidays' => $holidays]);
 
 
         if (!$place) {

@@ -28,13 +28,23 @@ class ChatService
      * @param int $sender_user_id
      * @param int $place_id
      */
-    public function getMessagesByUserPlaceId($sender_user_id, $place_id)
+    public function getMessagesByUserPlaceId($user_id, $place_id)
     {
         // Retrieve and return messages from the database based on sender_user_id and place_id
-        $messages = Chat::where('sender_user_id', $sender_user_id)
-            ->where('place_id', $place_id)
+        //$messages = Chat::where('sender_user_id', $user_id)
+        //    ->where('place_id', $place_id)
+        //    ->where('receiver_user_id', $user_id)
+        //    ->orderBy('created_at', 'asc')
+        //    ->get();
+        
+        $messages = Chat::where('place_id', $place_id)
+            ->where(function ($query) use ($user_id) {
+                $query->where('sender_user_id', $user_id)
+                    ->orWhere('receiver_user_id', $user_id);
+            })
             ->orderBy('created_at', 'asc')
             ->get();
+
 
         //return $messages;
         $formattedMessages = [];

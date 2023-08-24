@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->id(); // Primary key with auto_increment
             $table->string('name');
             $table->string('email');
-            $table->string('address');
-            $table->string('tel');
+            $table->string('address')->nullable(true);
+            $table->string('tel')->nullable(true);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps(); // Created at and updated at

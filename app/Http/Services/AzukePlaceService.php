@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Log;
 
 
 use App\Models\PetAzukePlace;
+use App\Models\PlaceHoliday;
+
 
 class AzukePlaceService
 {
@@ -67,6 +69,37 @@ class AzukePlaceService
             //];
         //});
         return $place_detail;
+
+        //return response()->json(['place' => $formattedPlace]);
+    }
+    
+    public function getPlaceholidaysById($id)
+    {
+        $place_holidays = PlaceHoliday::find($id);
+        
+        //dump($place_detail);
+
+        //$formattedPlace = $place_detail->map(function ($place_detail) {
+            //return [
+            //    'place_id' => $place_detail->id,
+            //    'user_id' => $place_detail->user_id,
+            //    'place_name' => $place_detail->place_name,
+            //    'price' => $place_detail->price,
+            //    'postal_code' => $place_detail->postal_code,
+            //    'address1' => $place_detail->address1,
+            //    'address2' => $place_detail->address2,
+            //    'address3' => $place_detail->address3,
+            //    'description' => $place_detail->description,
+            //    'cat_allow' => $place_detail->cat_allow,
+            //    'dog_allow' => $place_detail->dog_allow,
+            //    'pet_food_service' => $place_detail->pet_food_service,
+            //    'pets_allowed_number' => $place_detail->pets_allowed_number,
+            //    'check_in_time' => $place_detail->check_in_time,
+            //    'check_out_time' => $place_detail->check_out_time,
+            //    'other_details' => $place_detail->other_details,
+            //];
+        //});
+        return $place_holidays;
 
         //return response()->json(['place' => $formattedPlace]);
     }

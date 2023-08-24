@@ -36,6 +36,7 @@ class ChatController extends Controller
         
         return view('chat', ['formattedMessages' => $messages]);
     }
+    
 
 
     // Send chat message
@@ -64,21 +65,23 @@ class ChatController extends Controller
     // Send chat message
     // Send chat message
     public function sendMessage(Request $request)
-        {
-            Log::info('sendMessage method called');
+    {
+        Log::info('sendMessage method called');
 
-            $this->chatService->sendMessages($request);
+        $this->chatService->sendMessages($request);
 
-            //$senderUserId = $request->input('sender_user_id');
-            //$placeId = $request->input('place_id');
+        $senderUserId = $request->input('sender_user_id');
+        $receiverUserId = $request->input('receiver_user_id');
+        $placeId = $request->input('place_id');
 
-            //$messages = $this->chatService->getMessagesByUserPlaceId($senderUserId, $placeId);
+        Log::info($senderUserId);
+        Log::info($placeId);
 
-            //return view('chat', ['formattedMessages' => $messages]);
-            
-            return redirect('/chat/1/2'); // Redirect to the /chat URL
+        // The rest of your logic...
 
-        }
+        return redirect("/chat/{$senderUserId}/{$receiverUserId}/{$placeId}");
+    }
+
 
 
     
